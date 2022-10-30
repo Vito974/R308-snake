@@ -98,7 +98,7 @@ On crée deux assesseurs, un pour retourner la position du serpent du client et 
         self.__serpent.move(direction,p)
 ```
 
-##Class Pomme
+## Class Pomme
 Enfin, je crée une classe pomme qui prend en argument un serpent et a comme attribut sa propre position. Lors de l'instanciation, on met la position de la pomme dans une position aléatoire sur la grille.
 
 ```Python
