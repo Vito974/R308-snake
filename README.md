@@ -1,7 +1,7 @@
 # R308-RT2A-snake
 Jeu du serpent en python
 
-##NOTICE D'utlisation 
+## NOTICE D'utlisation 
 Lancer le script server.py dans le dossier server puis client.py dans le dossier client.
 
 ## PANCHOO-Ashvin-YAZGHICH-Zineb - Serveur
