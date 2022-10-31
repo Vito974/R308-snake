@@ -136,7 +136,7 @@ Cette fonction a pour but d'afficher le serpent qui de base se trouve être une 
 
 Dans un premier temps nous commencerons par chargé tous les sprites pour l'utilisation de la fonction.
 
-```
+```Python
 tête = pygame.image.load('image/t.png')
     têteH = pygame.image.load('image/TH.png')
     têteB = pygame.image.load('image/TB.png')
@@ -158,7 +158,7 @@ tête = pygame.image.load('image/t.png')
 
 Par la suite en fonction des coordonnées noté k, de la suite des coordonnés (k+1) et par moments d'ancien coordonné (k-1) j'ai pu définir les règles pour la sélection du sprite à afficher en fonction des coordonnées. Et j'ai mis toutes les règles dans une boucle qui parcourt toute la liste.
 
-```
+```Python
 for k in range (len(S)):
         if (k==0):
             if (S[k][1]==S[k+1][1])&(S[k][0]<S[k+1][0]):
@@ -203,7 +203,7 @@ Voilà maintenant nous avons une fonction qui est capable d'afficher un serpent 
 
 La fonction affiche pomme est une fonction simple qui permet d'afficher une pomme en fonction d'une liste simple composée de deux nombres (coordonnée). Dans un premier temps nous chargons le sprit de la pomme dans le programme, puis nous l'affichons à l'endroit donné dans la liste.
 
-```
+```Python
 def affiche_P(S):
     pomme = pygame.image.load('image/pomme.png')
     screen.blit(pomme, S)
@@ -213,7 +213,7 @@ def affiche_P(S):
 
 Pour la détection des touches appuyées pendant les jeux nous utiliseront la variable EVENT de pygame pour détecter les quatre touches (Z Q S D) de déplacement pour le serpent. Quand une des touches est appuyée, cela enverra au serveur une lettre au serveur pour le notifier du changement de direction du serpent.
 
-```
+```Python
 elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_z:
                 time.sleep(1)
@@ -242,7 +242,7 @@ Différentes listes sont envoyé par le serveur, une liste simple avec juste deu
 Il faut donc traité et géré toutes ces listes pour faire fonctionner le jeu. 
 En fonction de la longueur de la liste nous pouvons donc savoir à quoi vas servir cette liste et l'utiliser avec la fonction appropriée !
 
-```
+```Python
 S = json.loads(clientSocket.recv(1024).decode())
     
     print(S)
