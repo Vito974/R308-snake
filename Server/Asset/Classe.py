@@ -1,11 +1,10 @@
-from random import random
-
+import random
 class Serpent :
     __position : list
     __direction : str
 
     def __init__(self):
-        self.__position = [[0,0],[1,0],[2,0],[3,0]]
+        self.__position = [[0,0],[10,0],[20,0],[30,0]]
         self.__direction = "R"
    
     def move (self,direction,p) :
@@ -15,22 +14,22 @@ class Serpent :
 
         if (direction == "R") :
             pos = self.__position[0].copy()
-            pos[0] += 1
+            pos[0] += 20
             self.__position.insert(0,pos)
         
         elif (direction == "L") :
             pos = self.__position[0].copy()
-            pos[0] -= 1
+            pos[0] -= 20
             self.__position.insert(0,pos)
 
         elif (direction == "U") :
             pos = self.__position[0].copy()
-            pos[1] += 1
+            pos[1] += 20
             self.__position.insert(0,pos)
 
         elif (direction == "D") :
             pos = self.__position[0].copy()
-            pos[1] -= 1
+            pos[1] -= 20
             self.__position.insert(0,pos)
 
 
@@ -50,8 +49,9 @@ class Serpent :
         
         for k in self.__position :
             for e in k :
-                if (e > 40 or e < 0) :
-                    print("gameover") 
+                if (e > 400 or e < 0) :
+                    print("gameover")
+                    self.__position = [] 
 
     def get_position(self) :
         return self.__position
@@ -82,7 +82,7 @@ class Pomme :
     __serpent : Serpent
 
     def __init__(self, s):
-        self.__position = [random.randrange(0,40),random.randrange(0,40)]
+        self.__position = [random.randrange(0,400),random.randrange(0,400)]
         self.__serpent = s
     
     def position (self):
@@ -91,7 +91,7 @@ class Pomme :
 
     def set_position(self) : 
         while (True) :
-            self.__position = [random.randrange(0,40),random.randrange(0,40)]
+            self.__position = [random.randrange(0,400),random.randrange(0,400)]
             if (self.__position in self.__serpent.get_position()): 
                 continue
             else :
