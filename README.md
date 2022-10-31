@@ -2,7 +2,7 @@
 Jeu du serpent en python
 
 ## NOTICE D'Utilisation 
-Lancer le script server.py dans le dossier server puis client.py dans le dossier client.
+Lancer le script server.py dans le dossier server/Asset puis client.py dans le dossier client.
 
 ## PANCHOO-Ashvin-YAZGHICH-Zineb - Serveur
 Dans cette partie, je vais expliquer la manière dont a été pensé et coder la partie serveur du jeu. Tout d'abord, j'ai créé une branche git serveur dans la quel, j'ai créé le dossier Serveur où j'ai placé les scripts python concernant ma partie. Ensuite, j'ai créé un fichier Class.py qui contient les classes nécessaires pour faire fonctionner le jeu.
