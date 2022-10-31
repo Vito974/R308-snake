@@ -1,8 +1,10 @@
 # R308-RT2A-snake
 Jeu du serpent en python
 
+##NOTICE D'utlisation 
+Lancer le script server.py dans le dossier server puis client.py dans le dossier client.
 
-## PANCHOO-Ashvin-Serveur
+## PANCHOO-Ashvin-YAZGHICH-Zineb - Serveur
 Dans cette partie, je vais expliquer la manière dont a été pensé et coder la partie serveur du jeu. Tout d'abord, j'ai créé une branche git serveur dans la quel, j'ai créé le dossier Serveur où j'ai placé les scripts python concernant ma partie. Ensuite, j'ai créé un fichier Class.py qui contient les classes nécessaires pour faire fonctionner le jeu.
 
 ### Class Serpent
@@ -128,7 +130,7 @@ Enfin, je crée la méthode qui permet de replacer la pomme. C'est une boucle qu
                 break
         return self.__position
  ```
-## NANY-ANDIAPIN Emerick - Client 
+## NANY-ANDIAPIN Emerick ISAMBERT Gabriel - Client 
 Dans cette partie, je vais expliquer la manière dont a été pensé et coder la partie serveur du jeu. Tout d'abord, j'ai créé une branche git client dans laquel, j'ai créé le dossier Client où j'ai placé les scripts python concernant ma partie.
 
 ### Fonction Affiche_S (affiche serpent)
