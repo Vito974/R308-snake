@@ -4,7 +4,11 @@ class Serpent :
     __direction : str
 
     def __init__(self):
+<<<<<<< HEAD
         self.__position = [[0,0],[10,0],[20,0],[30,0]]
+=======
+        self.__position = [[0,0],[1,0],[2,0]]
+>>>>>>> f14a65b9eacc15bee7c4437deeead8ddcdee78dd
         self.__direction = "R"
    
     def move (self,direction,p) :
@@ -37,16 +41,20 @@ class Serpent :
             return "error"
         
 
-        #verifie si on est sur la pomme
+        #verifie si on est pas sur la pomme alors on supprime le dernier element 
+        
         if (self.__position[0] != p ):
             del self.__position[-1]
 
+        #pour que le serpent ne revient pas sur lui meme  
 
         if (self.__position.count(self.__position[0])> 1) :
             print("game over")
         else :
             print("game continue")
-        
+
+        #vérifie si on est pas en dehors de la grille
+
         for k in self.__position :
             for e in k :
                 if (e > 400 or e < 0) :
