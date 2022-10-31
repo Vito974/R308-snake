@@ -41,11 +41,14 @@ class Serpent :
         
         if (self.__position[0] != p ):
             del self.__position[-1]
+        else :
+            return "touché"
 
         #pour que le serpent ne revient pas sur lui meme  
 
         if (self.__position.count(self.__position[0])> 1) :
             print("game over")
+            self.__position = []
         else :
             print("game continue")
 
@@ -86,7 +89,7 @@ class Pomme :
     __serpent : Serpent
 
     def __init__(self, s):
-        self.__position = [random.randrange(0,400),random.randrange(0,400)]
+        self.__position = [random.randrange(0,400,20),random.randrange(0,400,20)]
         self.__serpent = s
     
     def position (self):
@@ -95,7 +98,7 @@ class Pomme :
 
     def set_position(self) : 
         while (True) :
-            self.__position = [random.randrange(0,400),random.randrange(0,400)]
+            self.__position = [random.randrange(0,400,20),random.randrange(0,400,20)]
             if (self.__position in self.__serpent.get_position()): 
                 continue
             else :

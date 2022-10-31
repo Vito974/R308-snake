@@ -2,6 +2,7 @@ import json
 import socket
 import pickle
 import time
+import select
 from Classe import *
 # Create a stream based socket(i.e, a TCP socket)
 # operating on IPv4 addressing scheme
@@ -14,34 +15,51 @@ serverSocket.listen();
 
 while(True):
     (clientConnected, clientAddress) = serverSocket.accept();
-    serverSocket.settimeout(3)
     print("Accepted a connection request from %s:%s"%(clientAddress[0], clientAddress[1]));
     serpent = Serpent()
     pomme = Pomme(serpent)
-    position = json.dumps(pomme.set_position())
-    req = clientConnected.recv(4096).decode()
-    clientConnected.send(position.encode())
-    time.sleep(4)
+    
+    position = pomme.set_position()
+    p_position = json.dumps(position)
+    
+    clientConnected.send(p_position.encode())
+    
+    time.sleep(2)
+    
     s_direction = "U"
     req = 0
     while True :
-        print("je recommence")
-        if(req== "U"):
+        ready = select.select([clientConnected], [], [], 1)
+        if ready[0]:
+            req = clientConnected.recv(4096).decode()
+            print(req)
+        
+        if(req== "D"):
             s_direction = "U"
-            serpent.move("U",position)
+            if(serpent.move("U",position)=="touché"):
+                position = pomme.set_position()
+                p_position = json.dumps(position)
+                clientConnected.send(p_position.encode())
             s_position = json.dumps(serpent.get_position())
             clientConnected.send(s_position.encode())
 
         
-        elif(req== "D") :
+        elif(req== "U") :
             s_direction = "D"
-            serpent.move("D",position)
+            if(serpent.move("D",position)=="touché"):
+                position = pomme.set_position()
+                p_position = json.dumps(position)
+                clientConnected.send(p_position.encode())
             s_position = json.dumps(serpent.get_position())
             clientConnected.send(s_position.encode())
 
         
         elif(req== "L") :
             s_direction = "L"
+            if(serpent.move("L",position)=="touché"):
+                position = pomme.set_position()
+                p_position = json.dumps(position)
+                clientConnected.send(p_position.encode())
             serpent.move("L",position)
             s_position = json.dumps(serpent.get_position())
             clientConnected.send(s_position.encode())
@@ -49,36 +67,19 @@ while(True):
 
         elif(req== "R") :
             s_direction = "R"
-            serpent.move("R",position)
+            if(serpent.move("R",position)=="touché"):
+                position = pomme.set_position()
+                p_position = json.dumps(position)
+                clientConnected.send(p_position.encode())
             s_position = json.dumps(serpent.get_position())
             clientConnected.send(s_position.encode())
 
         else :
-            serpent.move(s_direction,position)
+            if(serpent.move(s_direction,position)=="touché"):
+                position = pomme.set_position()
+                p_position = json.dumps(position)
+                clientConnected.send(p_position.encode())
             s_position = json.dumps(serpent.get_position())
             clientConnected.send(s_position.encode())
-        time.sleep(1)
+        time.sleep(0.2)
         
-
-
-    #dataFromClient = clientConnected.recv(4096).decode()
-    #dataFromClient = json.loads(dataFromClient)
-    #print(dataFromClient);
-    
-    # Send some data back to the client
-    #clientConnected.send("Hello Client!".encode());
-    #z = json.dumps([4,5])
-    #y = json.dumps([10,10])
-    #clientConnected.send(z.encode())
-    #time.sleep(2.5)
-    #clientConnected.send(y.encode())
-    #time.sleep(2.5)
-    #dataFromClient = clientConnected.recv(4096).decode()
-    #print(dataFromClient);
-
-
-
-
-
-    #dataFromClient = clientConnected.recv(4096).decode()
-    #print(dataFromClient)
