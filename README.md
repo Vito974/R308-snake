@@ -265,8 +265,9 @@ S = json.loads(clientSocket.recv(1024).decode())
         affiche_P(Y)
         pygame.display.update()
         print("Serpant !")
-ALIBAY-PATEL-Ibrahim-DAMDJI-Imran
-Pourquoi Socket.IO ?
+```
+## ALIBAY PATEL Ibrahim et DAMDJI Imran
+Pourquoi Socket.IO  ?
 
  Socket.IO est une bibliothèque qui permet une communication à faible latence, bidirectionnelle et basée sur les événements entre un client et un serveur. Il repose sur le protocole Web Socket et offre des garanties supplémentaires telles qu'un mode dégradé en HTTP long-polling ou la reconnexion automatique
 
@@ -321,6 +322,6 @@ while(True):
 
 # # Afficher sur la console
     print(dataFromServer.decode());
-```
+
 Le programme permet d’envoyer et de recevoir une liste de liste mais impossible de d’envoyer une liste de liste avec le socket IO même en important des Paquets comme JSON 
 Donc il faut adapter il faut le programme pour décomposer les liste de liste en liste et de recomposer coter réception en liste de liste.
