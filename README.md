@@ -265,4 +265,62 @@ S = json.loads(clientSocket.recv(1024).decode())
         affiche_P(Y)
         pygame.display.update()
         print("Serpant !")
+ALIBAY-PATEL-Ibrahim-DAMDJI-Imran
+Pourquoi Socket.IO ?
+
+ Socket.IO est une bibliothèque qui permet une communication à faible latence, bidirectionnelle et basée sur les événements entre un client et un serveur. Il repose sur le protocole Web Socket et offre des garanties supplémentaires telles qu'un mode dégradé en HTTP long-polling ou la reconnexion automatique
+
+COTE SERVER :
 ```
+# importation du module socket
+import socket
+
+# Création du socket basé sur le flux (c'est-à-dire un socket TCP)
+# fonctionnant sur le schéma d'adressage IPv4
+
+serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
+print("Socket créé...")
+‘
+# Lier et écouter su le port 8080
+serverSocket.bind(("",8080));  #écouter
+serverSocket.listen();          # Lier
+print('Server en ecoute')
+
+# Accepter les connexions
+while(True):
+    (clientConnected, clientAddress) = serverSocket.accept();
+    print("Accepte la demande de connexion de %s:%s"%(clientAddress[0], clientAddress[1]));
+    
+    # Renvoyez des données au client
+    dataFromClient = clientConnected.recv()
+     # Imprimer sur la consol e
+
+    print(list(dataFromClient));
+    
+    # Envoyez des données au client
+    clientConnected.send("Hello Client!".encode());
+```
+COTE CLIENT :
+
+import socket
+ 
+# Créer un socket client
+clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
+
+# Connectez-vous au serveur
+clientSocket.connect(("",8080));
+
+while(True):
+    
+    # envoie de liste  au serveur 
+    y=bytes([1,2,2])
+    clientSocket.send(y)
+
+# Recevoir des données du serveur
+    dataFromServer = clientSocket.recv(1024);
+
+# # Afficher sur la console
+    print(dataFromServer.decode());
+```
+Le programme permet d’envoyer et de recevoir une liste de liste mais impossible de d’envoyer une liste de liste avec le socket IO même en important des Paquets comme JSON 
+Donc il faut adapter il faut le programme pour décomposer les liste de liste en liste et de recomposer coter réception en liste de liste.
